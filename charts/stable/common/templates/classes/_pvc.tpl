@@ -39,4 +39,7 @@ spec:
   {{- if $values.storageClass }}
   storageClassName: {{ if (eq "-" $values.storageClass) }}""{{- else if (eq "SCALE-ZFS" $values.storageClass ) }}{{ ( printf "%v-%v"  "ix-storage-class" .Release.Name ) }}{{- else }}{{ $values.storageClass | quote }}{{- end }}
   {{- end }}
+  {{- if $values.volumeName }}
+  volumeName: {{ $values.volumeName | quote }}
+  {{- end }}
 {{- end -}}
